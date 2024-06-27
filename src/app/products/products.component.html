@@ -1,0 +1,42 @@
+<div class="container-fluid main py-4">
+    <div class="row">
+      <div class="col text-end">
+        <img src="assets/settingIcon.jfif"  class="image-fluid mb-1" style="width:35px;" alt="settingIcon">
+      </div>
+    </div>
+   <div class="container">
+        <div class="row">
+          <!-- Dynamic cards for dress list -->
+          <div class="col-md-auto mb-2" *ngFor="let dress of otherDresses">
+            <div class="card" style="width: 15rem;">
+              <img src="assets/arrow-back-circle-sharp.svg" class="image-fluid backwardarrow" alt="backwardarrow" (click)="previousDress()">
+              <img [src]="getDressImage(dress.id)" class="card-img-top" alt="...">
+              <img src="assets/arrow-forward-circle.svg" class="image-fluid forwardarrow" alt="forwardarrow" (click)="nextDress()">
+              <div class="card-body">
+                <span class="retailPrice">RRP £{{ dress.retailPrice }}</span>
+                <h6 class="card-title"><span class="brandName">{{ dress.brandName }}</span> {{ dress.dressName }}</h6>
+                <p class="card-text">Size: {{ dress.size }}</p>
+                <p class="card-text">Rental Price: ${{ dress.rentalPrice }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Static card for the last dress in the list -->
+        <div class="row justify-content-center mt-5" *ngIf="dressList.length > 0">
+          <div class="col-md-auto">
+            <div class="card" style="width: 15rem;">
+              <img src="assets/arrow-back-circle-sharp.svg" class="image-fluid backwardarrow" alt="backwardarrow" (click)="previousDress()">
+              <img [src]="getDressImage(currentDress.id)" class="card-img-top" alt="...">
+              <img src="assets/arrow-forward-circle.svg" class="image-fluid forwardarrow" alt="forwardarrow" (click)="nextDress()">
+              <div class="card-body">
+                <span class="retailPrice">RRP £{{ currentDress.retailPrice }}</span>
+                <h6 class="card-title"><span class="brandName">{{ currentDress.brandName }}</span> {{ currentDress.dressName }}</h6>
+                <p class="card-text">Size: {{ currentDress.size }}</p>
+                <p class="card-text">Rental Price: ${{ currentDress.rentalPrice }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
