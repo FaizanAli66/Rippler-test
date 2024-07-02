@@ -14,4 +14,5 @@ export class ProductInformationService {
   getDressList(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+  
 }

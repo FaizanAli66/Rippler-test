@@ -1,42 +1,91 @@
 <div class="container-fluid main py-4">
+  <div class="row">
+    <div class="col text-end">
+      <img src="assets/settingIcon.jfif" class="image-fluid mb-1" style="width: 35px" alt="settingIcon"/>
+    </div>
+  </div>
+  <div class="container-fluid">
     <div class="row">
-      <div class="col text-end">
-        <img src="assets/settingIcon.jfif"  class="image-fluid mb-1" style="width:35px;" alt="settingIcon">
+      <!-- Dynamic cards for dress list -->
+      <div class="col-md-auto col-sm-auto mb-2 mb-2" *ngFor="let dress of dressList ; let i = index">
+        <div class="card" style="width: 15rem" #ProdCard [id]="i">
+          <img src="assets/arrow-back-circle-sharp.svg" class="image-fluid backwardarrow" alt="backwardarrow" (click)="previousDress(dress?.images,img,ProdCard)" />
+          
+            <img [src]="Imgurl+dress?.images[0]" class="card-img-top" alt="" [id]="i+1" #img/>
+
+          <img src="assets/arrow-forward-circle.svg" class="image-fluid forwardarrow" alt="forwardarrow" (click)="nextDress(dress?.images,img,ProdCard)" />
+
+          <div class="card-body">
+                       <!-- Feature img is showing just for Testing But Not Required -->
+            <!-- <span class="thumbnails" *ngFor="let img of dress?.images">
+                  <img [src]="Imgurl+img" alt="" width="40px" height="40px">                 
+            </span> -->
+            <br>
+            <span class="retailPrice">RRP £{{ dress.retailPrice }}</span>
+            <h6 class="card-title"> <span class="brandName">{{ dress.brandName }}</span> <span class="dressname"> {{ dress.dressName }}</span> </h6>
+            <p class="card-text">Size {{ dress.size }}</p>
+            <p class="card-text Rental"> £ {{ dress.rentalPrice }}  Rental</p>
+          </div>
+        </div>
       </div>
     </div>
-   <div class="container">
-        <div class="row">
-          <!-- Dynamic cards for dress list -->
-          <div class="col-md-auto mb-2" *ngFor="let dress of otherDresses">
-            <div class="card" style="width: 15rem;">
-              <img src="assets/arrow-back-circle-sharp.svg" class="image-fluid backwardarrow" alt="backwardarrow" (click)="previousDress()">
-              <img [src]="getDressImage(dress.id)" class="card-img-top" alt="...">
-              <img src="assets/arrow-forward-circle.svg" class="image-fluid forwardarrow" alt="forwardarrow" (click)="nextDress()">
-              <div class="card-body">
-                <span class="retailPrice">RRP £{{ dress.retailPrice }}</span>
-                <h6 class="card-title"><span class="brandName">{{ dress.brandName }}</span> {{ dress.dressName }}</h6>
-                <p class="card-text">Size: {{ dress.size }}</p>
-                <p class="card-text">Rental Price: ${{ dress.rentalPrice }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-        <!-- Static card for the last dress in the list -->
-        <div class="row justify-content-center mt-5" *ngIf="dressList.length > 0">
-          <div class="col-md-auto">
-            <div class="card" style="width: 15rem;">
-              <img src="assets/arrow-back-circle-sharp.svg" class="image-fluid backwardarrow" alt="backwardarrow" (click)="previousDress()">
-              <img [src]="getDressImage(currentDress.id)" class="card-img-top" alt="...">
-              <img src="assets/arrow-forward-circle.svg" class="image-fluid forwardarrow" alt="forwardarrow" (click)="nextDress()">
-              <div class="card-body">
-                <span class="retailPrice">RRP £{{ currentDress.retailPrice }}</span>
-                <h6 class="card-title"><span class="brandName">{{ currentDress.brandName }}</span> {{ currentDress.dressName }}</h6>
-                <p class="card-text">Size: {{ currentDress.size }}</p>
-                <p class="card-text">Rental Price: ${{ currentDress.rentalPrice }}</p>
-              </div>
-            </div>
+</div>
+
+    
+
+
+    <!-- Static card for the last dress in the list -->
+    <!-- <div class="row justify-content-center mt-5" *ngIf="dressList.length > 0">
+      <div class="col-md-auto">
+        <div class="card" style="width: 15rem">
+          <img
+            src="assets/arrow-back-circle-sharp.svg"
+            class="image-fluid backwardarrow"
+            alt="backwardarrow"
+            (click)="previousDress()"
+          />
+          <img
+            [src]="getDressImage(currentDress.id)"
+            class="card-img-top"
+            alt="..."
+          />
+          <img
+            src="assets/arrow-forward-circle.svg"
+            class="image-fluid forwardarrow"
+            alt="forwardarrow"
+            (click)="nextDress()"
+          />
+          <div class="card-body">
+            <span class="retailPrice">RRP £{{ currentDress.retailPrice }}</span>
+            <h6 class="card-title">
+              <span class="brandName">{{ currentDress.brandName }}</span>
+              {{ currentDress.dressName }}
+            </h6>
+            <p class="card-text">Size: {{ currentDress.size }}</p>
+            <p class="card-text">
+              Rental Price: ${{ currentDress.rentalPrice }}
+            </p>
           </div>
         </div>
       </div>
+    </div>
   </div>
+</div> -->
+
+<!-- <div class="container">
+  <img
+    src="http://165.232.44.99/public/uploads/image/8bdec742-cd56-4322-b3ea-55c7aa94f4f2"
+    alt="prod-img"
+  />
+</div> -->
+
+
+
+  <!-- <div class="container">
+           <img src="http://165.232.44.99/public/uploads/image/8bdec742-cd56-4322-b3ea-55c7aa94f4f2" 
+           width="40px" alt="">
+           <img src="http://165.232.44.99/public/uploads/image/7aa580dc-3a67-4a6d-b0b1-5dbfc2e25e3b" 
+           width="40px" alt="">
+           <img src="http://165.232.44.99/public/uploads/image/8bdec742-cd56-4322-b3ea-55c7aa94f4f2" 
+           width="40px" alt="">
+  </div> -->
